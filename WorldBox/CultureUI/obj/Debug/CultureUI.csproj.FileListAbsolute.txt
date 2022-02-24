@@ -1,0 +1,15 @@
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\bin\Debug\CultureUI.dll
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\bin\Debug\CultureUI.pdb
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\bin\Debug\Assembly-CSharp.dll
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\bin\Debug\UnityEngine.CoreModule.dll
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\bin\Debug\UnityEngine.dll
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\bin\Debug\UnityEngine.IMGUIModule.dll
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\bin\Debug\UnityEngine.InputLegacyModule.dll
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\bin\Debug\UnityEngine.InputModule.dll
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\bin\Debug\UnityEngine.UI.dll
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\obj\Debug\CultureUI.csproj.AssemblyReference.cache
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\obj\Debug\CultureUI.csproj.CoreCompileInputs.cache
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\obj\Debug\CultureUI.csproj.CopyComplete
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\obj\Debug\CultureUI.dll
+C:\Users\andyg\OneDrive\Documents\Repository\CultureUI\obj\Debug\CultureUI.pdb

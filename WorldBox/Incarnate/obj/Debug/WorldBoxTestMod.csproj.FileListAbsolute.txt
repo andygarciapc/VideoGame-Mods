@@ -1,0 +1,13 @@
+C:\Users\andyg\OneDrive\Documents\Repository\WorldBoxTestMod\bin\Debug\WorldBoxTestMod.dll
+C:\Users\andyg\OneDrive\Documents\Repository\WorldBoxTestMod\bin\Debug\WorldBoxTestMod.pdb
+C:\Users\andyg\OneDrive\Documents\Repository\WorldBoxTestMod\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\andyg\OneDrive\Documents\Repository\WorldBoxTestMod\bin\Debug\Assembly-CSharp.dll
+C:\Users\andyg\OneDrive\Documents\Repository\WorldBoxTestMod\bin\Debug\UnityEngine.CoreModule.dll
+C:\Users\andyg\OneDrive\Documents\Repository\WorldBoxTestMod\bin\Debug\UnityEngine.dll
+C:\Users\andyg\OneDrive\Documents\Repository\WorldBoxTestMod\bin\Debug\UnityEngine.InputLegacyModule.dll
+C:\Users\andyg\OneDrive\Documents\Repository\WorldBoxTestMod\bin\Debug\UnityEngine.InputModule.dll
+C:\Users\andyg\OneDrive\Documents\Repository\WorldBoxTestMod\bin\Debug\UnityEngine.UI.dll
+C:\Users\andyg\OneDrive\Documents\Repository\WorldBoxTestMod\obj\Debug\WorldBoxTestMod.csproj.CoreCompileInputs.cache
+C:\Users\andyg\OneDrive\Documents\Repository\WorldBoxTestMod\obj\Debug\WorldBoxTestMod.csproj.CopyComplete
+C:\Users\andyg\OneDrive\Documents\Repository\WorldBoxTestMod\obj\Debug\WorldBoxTestMod.dll
+C:\Users\andyg\OneDrive\Documents\Repository\WorldBoxTestMod\obj\Debug\WorldBoxTestMod.pdb

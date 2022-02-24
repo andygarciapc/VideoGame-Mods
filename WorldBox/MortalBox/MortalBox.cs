@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +26,8 @@ namespace MortalBox
 		public static Rect mainTroopWindowRect = new Rect(124f, 0f, 19f, 197f);
 		public static Rect controlledUnitWindowRect = new Rect(0f, 0f, 124f, 82f);
 		public static Rect button = new Rect(0f, 0f, 80f, 15f);
+		public static double curStamina = 0f;
+		const double maxStamina = 100f;
 
 		private static UInt16 troopCount = 0;
 		private static Actor theChosen;
@@ -34,6 +36,7 @@ namespace MortalBox
 		void Start()
         {
 			isGameLoaded = Config.gameLoaded;
+			MortalBoxTraitBoot();
         }
 
 		void OnGUI()
@@ -95,7 +98,7 @@ namespace MortalBox
 
 		private void MortalBoxUI()
         {
-			WorldBoxMod.mainButtonWindowRect = GUI.Window(0, WorldBoxMod.mainButtonWindowRect, MortalBoxButtonWindow, "Stronger United");
+			WorldBoxMod.mainButtonWindowRect = GUI.Window(0, WorldBoxMod.mainButtonWindowRect, MortalBoxButtonWindow, "MortalBox");
 			if (WorldBoxMod.isShowingTroops && WorldBoxMod.troopCount > 0)
 			{
 				WorldBoxMod.mainTroopWindowRect = GUI.Window(1, WorldBoxMod.mainTroopWindowRect, MortalBoxTroopWindow, "");
@@ -104,6 +107,72 @@ namespace MortalBox
             {
 				WorldBoxMod.controlledUnitWindowRect = GUI.Window(2, WorldBoxMod.controlledUnitWindowRect, MortalBoxUnitWindow, "");
 			}
+		}
+
+		private void MortalBoxTraitBoot()
+        {
+			Dictionary<string, string> lText = Reflection.GetField(LocalizedTextManager.instance.GetType(), LocalizedTextManager.instance, "localizedText") as Dictionary<string, string>;
+			ActorTrait incarnation = new ActorTrait();
+			incarnation.id = "incarnation";
+			incarnation.icon = AssetManager.traits.get("blessed").icon;
+			incarnation.baseStats.mod_armor = 70f;
+			incarnation.baseStats.mod_attackSpeed = 150f;
+			incarnation.baseStats.mod_speed = 200f;
+			incarnation.baseStats.mod_health = 3000f;
+			incarnation.baseStats.mod_crit = 50f;
+			incarnation.baseStats.range = 30f;
+			incarnation.baseStats.scale = 0.13f;
+			incarnation.baseStats.mod_damage = 65f;
+			incarnation.baseStats.intelligence = 50;
+			incarnation.baseStats.stewardship = 50;
+			incarnation.baseStats.warfare = 50;
+			incarnation.baseStats.diplomacy = 50;
+			incarnation.action_death = new WorldAction(ActionLibrary.tryToGrowTree);
+			incarnation.inherit = 0f;
+			incarnation.birth = 0f;
+			AssetManager.traits.add(incarnation);
+			lText.Add("trait_" + incarnation.id, "Incarnate");
+			lText.Add("trait_" + incarnation.id + "_info", "Crafted by God Himself");
+
+			ActorTrait sprinting = new ActorTrait();
+			sprinting.id = "sprinting";
+			sprinting.icon = AssetManager.traits.get("agile").icon;
+			sprinting.baseStats.mod_speed = 200f;
+			sprinting.baseStats.dodge = 20f;
+			sprinting.inherit = 0f;
+			sprinting.birth = 0f;  
+			AssetManager.traits.add(sprinting);
+			lText.Add("trait_" + sprinting.id, "Sprinting");
+			lText.Add("trait_" + sprinting.id + "_info", "Run forest, run");
+
+			ActorTrait leader = new ActorTrait();
+			leader.id = "leader";
+			leader.icon = AssetManager.traits.get("veteran").icon;
+			leader.baseStats.diplomacy = 30;
+			leader.baseStats.stewardship = 30;
+			leader.baseStats.warfare = 30;
+			leader.inherit = 5f;
+			leader.birth = 5f;
+			AssetManager.traits.add(leader);
+			lText.Add("trait_" + leader.id, "Leader");
+			lText.Add("trait_" + leader.id + "_info", "They say some are born to lead");
+
+			ActorTrait superhuman = new ActorTrait();
+			superhuman.id = "superhuman";
+			superhuman.icon = AssetManager.traits.get("strong_minded").icon;
+			superhuman.baseStats.mod_armor = 50f;
+			superhuman.baseStats.mod_attackSpeed = 70f;
+			superhuman.baseStats.mod_speed = 100f;
+			superhuman.baseStats.mod_health = 2500f;
+			superhuman.baseStats.mod_crit = 50f;
+			superhuman.baseStats.range = 15f;
+			superhuman.baseStats.mod_damage = 50f;
+			superhuman.baseStats.scale = .04f;
+			superhuman.inherit = 5f;
+			superhuman.birth = .005f;
+			AssetManager.traits.add(superhuman);
+			lText.Add("trait_" + superhuman.id, "Super Human");
+			lText.Add("trait_" + superhuman.id + "_info", "Maybe they are from another planet... or something?");
 		}
 
 		public static void MortalBoxButtonWindow(int windowID)
@@ -201,8 +270,9 @@ namespace MortalBox
 			BaseStats playerStats = Reflection.GetField(WorldBoxMod.theChosen.GetType(), WorldBoxMod.theChosen, "curStats") as BaseStats;
 			string presentedHealth = WorldBoxMod.theChosen.base_data.health + "/" + playerStats.health;
 			float x = 2f, y = 2f, width = 120f;
-			GUI.Label(new Rect(x,y,width, 15f), "Name: " + WorldBoxMod.theChosen.coloredName);
-			GUI.Label(new Rect(x,y+16f,width,15f), presentedHealth);
+			GUI.Label(new Rect(x,y,width, 30f), "Name: " + WorldBoxMod.theChosen.coloredName);
+			GUI.Label(new Rect(x,y+31f,width,30f), "Health: " + presentedHealth);
+			GUI.Label(new Rect(x, y + (31 * 2), width, 30f), "Stamina: " + WorldBoxMod.maxStamina);
 
 			GUI.DragWindow(new Rect(0, 0, 10000, 10000));
 		}
