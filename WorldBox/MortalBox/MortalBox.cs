@@ -1,4 +1,23 @@
-﻿using System;
+﻿//Author information
+//  Author name: Andy Garcia
+//  Author email: andygarciapc@gmail.com
+//
+//Mod information
+//  Mod name: MortalBox
+//  Date program began: 2021-Nov-05
+//  Date of last update: 0000-Month-00
+//
+//Purpose
+//  Allow the player to control a team of creatures.
+//
+//This file
+//   File name: MortalBox.cs
+//   Language: C#
+//
+//
+//===== Begin code area ================================================================================================
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
