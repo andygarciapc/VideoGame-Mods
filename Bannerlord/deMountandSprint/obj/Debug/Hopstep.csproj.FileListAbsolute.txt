@@ -1,0 +1,6 @@
+C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules\Hopstep\bin\Win64_Shipping_Client\Hopstep.dll
+C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules\Hopstep\bin\Win64_Shipping_Client\Hopstep.pdb
+C:\Users\Titus\OneDriveAndy\OneDrive\Documents\Repository\Hopstep\Hopstep\obj\Debug\Hopstep.csproj.CoreCompileInputs.cache
+C:\Users\Titus\OneDriveAndy\OneDrive\Documents\Repository\Hopstep\Hopstep\obj\Debug\Hopstep.csproj.CopyComplete
+C:\Users\Titus\OneDriveAndy\OneDrive\Documents\Repository\Hopstep\Hopstep\obj\Debug\Hopstep.dll
+C:\Users\Titus\OneDriveAndy\OneDrive\Documents\Repository\Hopstep\Hopstep\obj\Debug\Hopstep.pdb

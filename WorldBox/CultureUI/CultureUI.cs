@@ -11,238 +11,108 @@ namespace CultureUI
 {
 	public class WorldBoxMod : MonoBehaviour
 	{
-		//UI Bools
-		public static bool ShowHideMaster = false;
-		public static bool ShowHide = false;
-		public static bool CultureUIOn = false;
-		public static bool selectingCulture = false;
-		public static bool expandingCulture = false;
-		public static bool reducingCulture = false;
-		public static bool changeCultureColor = false;
-		public static bool creatingCulture = false;
-		public static bool deletingCulture = false;
-		//Culture UI
-		private static Culture selectedCulture;
-		//Other
-		private static bool culturemodOn = false;
+		//BOOLS
+		public static bool isUIon = false;
+		private static bool isGameLoaded = false;
+		//ACTIVE BOOLS
+		public static bool isChoosingCulture = false;
+		//OBJECTS
+		private static int windowIDs = 1530;
+		private static MapBox instance = null;
+		public static Culture selectedCulture;
+		public static Rect mainWindowRect = new Rect(0f, 0f, 140f, 150f);
 
+		void Start()
+        {
+			isGameLoaded = Config.gameLoaded;
+			instance = MapBox.instance;
+        }
 		void OnGUI()
 		{
-			WorldBoxMod.CultureUI();
+			if (WorldBoxMod.isUIon)
+			{
+				CultureUI();
+			}
 		}
 
 		void Update()
 		{
-			WorldBoxMod.culturemodOn = Config.gameLoaded;
-
-			if (WorldBoxMod.culturemodOn)
+			if (WorldBoxMod.isGameLoaded)
 			{
-				CultureButtonInitialize();
+				CultureUpdate();
 			}
 		}
 
-		public void CultureButtonInitialize()
+		public void CultureUpdate()
 		{
-			bool uPress = Input.GetKeyDown("u");
-
-			if (uPress)
+			WorldTile mouseTile = null;
+			if (Input.GetKeyDown(KeyCode.U) )
 			{
-				WorldBoxMod.ShowHideMaster = !WorldBoxMod.ShowHideMaster;
+				WorldBoxMod.isUIon = !WorldBoxMod.isUIon;
 			}
-			if (WorldBoxMod.expandingCulture)
-			{
-				ExpandCulture(WorldBoxMod.selectedCulture);
-			}
-			if (WorldBoxMod.reducingCulture)
-			{
-				ReduceCulture();
-			}
-			if (WorldBoxMod.changeCultureColor)
-			{
-				RandomCultureColor(WorldBoxMod.selectedCulture);
-				WorldBoxMod.changeCultureColor = !WorldBoxMod.changeCultureColor;
-			}
-			if (WorldBoxMod.creatingCulture)
-			{
-				if (Input.GetMouseButtonDown(0))
-				{
-					City pCity = MapBox.instance.getMouseTilePos().zone.city;
-					Race pRace = Reflection.GetField(pCity.GetType(), pCity, "race") as Race;
-					Culture newCulture = CultureManager.instance.newCulture(pRace, pCity);
-					ExpandCulture(newCulture);
-					WorldBoxMod.creatingCulture = !WorldBoxMod.creatingCulture;
-				}
-			}
-			if(WorldBoxMod.deletingCulture)
+			if(Input.GetMouseButtonDown(0))
             {
-				DeleteCulture(WorldBoxMod.selectedCulture);
-				WorldBoxMod.deletingCulture = !WorldBoxMod.deletingCulture;
+				mouseTile = instance.getMouseTilePos();
             }
-		}
-
-		public static void CultureUI()
-		{
-			Rect buttonSize = new Rect(Screen.width - 100, 60, 100f, 20f);
-			WorldTile mousePos = MapBox.instance.getMouseTilePos();
-
-			if (WorldBoxMod.ShowHideMaster)
-			{
-				if (GUI.Button(new Rect(new Vector2(buttonSize.x, buttonSize.y + 20), new Vector2(buttonSize.width, buttonSize.height)), "CultureUI"))
-				{
-					WorldBoxMod.CultureUIOn = !WorldBoxMod.CultureUIOn;
-				}// CULTUREUI END
-				if (WorldBoxMod.CultureUIOn)
-				{
-					if (GUI.Button(new Rect(Screen.width - 240, 0, 120f, 20f), "Select Culture"))
-					{
-						WorldBoxMod.selectingCulture = true;
-					}
-					if (WorldBoxMod.selectingCulture)
-					{
-						if (Input.GetMouseButtonDown(0))
-						{
-							WorldBoxMod.selectedCulture = mousePos.zone.culture;
-							if (WorldBoxMod.selectedCulture != null)
-							{
-								WorldTip.showNow(WorldBoxMod.selectedCulture.name + " is now selected", true, "top", 1f);
-								WorldBoxMod.selectingCulture = false;
-							}
-							else
-							{
-								WorldTip.showNow("No culture selected", true, "top", 1f);
-								WorldBoxMod.selectingCulture = false;
-							}
-						}
-					}
-					if (WorldBoxMod.selectedCulture != null)
-					{
-						float cultureUIx = Screen.width - 240;
-						if (GUI.Button(new Rect(cultureUIx, 20, 120f, 20f), "Instant Research"))
-						{
-							WorldBoxMod.selectedCulture.addFinishedTech(WorldBoxMod.selectedCulture.researching_tech);
-							WorldBoxMod.selectedCulture.researching_tech = string.Empty;
-							WorldBoxMod.selectedCulture.research_progress = 0f;
-							WorldBoxMod.selectedCulture.researching_tech = WorldBoxMod.selectedCulture.findNextTechToResearch();
-							WorldTip.showNow(WorldBoxMod.selectedCulture.name + " has advanced in tech", true, "top", 1f);
-						}
-
-						if (GUI.Button(new Rect(cultureUIx, 40, 120f, 20f), "Expand Culture"))
-						{
-							if(WorldBoxMod.reducingCulture)
-                            {
-								WorldBoxMod.reducingCulture = !WorldBoxMod.reducingCulture;
-                            }
-							WorldBoxMod.expandingCulture = !WorldBoxMod.expandingCulture;
-						}
-
-						if (GUI.Button(new Rect(cultureUIx, 60, 120f, 20f), "Reduce Culture"))
-						{
-							if(WorldBoxMod.expandingCulture)
-                            {
-								WorldBoxMod.expandingCulture = !WorldBoxMod.expandingCulture;
-                            }
-							WorldBoxMod.reducingCulture = !WorldBoxMod.reducingCulture;
-						}
-
-						if (GUI.Button(new Rect(cultureUIx, 80, 120f, 20f), "Change Color"))
-						{
-							WorldBoxMod.changeCultureColor = !WorldBoxMod.changeCultureColor;
-						}
-
-						if (GUI.Button(new Rect(cultureUIx, 100, 120f, 20f), "New Culture"))
-						{
-							WorldBoxMod.creatingCulture = !WorldBoxMod.creatingCulture;
-						}
-
-						if (GUI.Button(new Rect(cultureUIx, 120, 120f, 20f), "Delete Culture"))
-						{
-							WorldBoxMod.deletingCulture = !WorldBoxMod.deletingCulture;
-						}
-
-					}
-				}
-			}
-
-		}
-
-		public void DeleteCulture(Culture selectedCulture)
-        {
-			selectedCulture.clearZones();
-			CultureManager.instance.list.Remove(selectedCulture);
-			CultureManager.instance.dict.Remove(selectedCulture.id);
-        }
-
-		public void ExpandCulture(Culture selectedCulture)
-        {
-			TileZone mousetileZone = MapBox.instance.getMouseTilePos().zone;
-			List<WorldTile> zoneTiles;
-			bool gPress = Input.GetKey("g");
-			if (gPress)
+			else { return; }
+			if(WorldBoxMod.isChoosingCulture)
             {
-				zoneTiles = mousetileZone.tiles;
-				selectedCulture.addZone(MapBox.instance.getMouseTilePos().zone);
-				for(int i = 0; i < zoneTiles.Count; ++i)
+				if(mouseTile.zone.culture == null)
                 {
-					for (int j = 0; j < zoneTiles[i].units.Count; ++i)
-                    {
-						SetActorCulture(selectedCulture, zoneTiles[i].units[j]);
-					}
-
+					return;
                 }
-            }
-			if (WorldBoxMod.creatingCulture)
-            {
-				zoneTiles = mousetileZone.tiles;
-				selectedCulture.addZone(MapBox.instance.getMouseTilePos().zone);
-				for(int i = 0; i < zoneTiles.Count; ++i)
-                {
-					for (int j = 0; j < zoneTiles[i].units.Count; ++i)
-					{
-						SetActorCulture(selectedCulture, zoneTiles[i].units[j]);
-					}
-
-				}
-            }
-        }
-
-		public void RandomCultureColor(Culture selectedCulture)
-        {
-			Race selectedRace = AssetManager.raceLibrary.get(selectedCulture.race);
-			selectedCulture.color = selectedRace.culture_colors.GetRandom<string>();
-			selectedCulture.color32 = new Color32(
-			(byte)UnityEngine.Random.Range(0, 255),
-			(byte)UnityEngine.Random.Range(0, 255),
-			(byte)UnityEngine.Random.Range(0, 255),
-			255
-			);
+				WorldBoxMod.selectedCulture = mouseTile.zone.culture;
+				WorldTip.showNow("Selected " + WorldBoxMod.selectedCulture.name, true, "top", 3f);
+				WorldBoxMod.isChoosingCulture = false;
+				Config.lockGameControls = false;
+			}
 		}
 
-		public void ReduceCulture()
+		void CultureUI()
         {
-			TileZone mousetileZone = MapBox.instance.getMouseTilePos().zone;
-			List<WorldTile> zoneTiles;
-			bool gPress = Input.GetKey("g");
-			if(gPress)
+			//windowIDs = 1530;
+			WorldBoxMod.mainWindowRect = GUI.Window(windowIDs, WorldBoxMod.mainWindowRect, CultureWindow, "CultureUI");
+			//++windowIDs;
+		}
+
+		public static void CultureWindow(int windowID)
+		{
+			string selectTitle = "Select Culture";
+			if(WorldBoxMod.selectedCulture != null)
             {
-				zoneTiles = mousetileZone.tiles;
-				WorldBoxMod.selectedCulture.removeZone(MapBox.instance.getMouseTilePos().zone);
-				for (int i = 0; i < zoneTiles.Count; ++i)
+				selectTitle = WorldBoxMod.selectedCulture.name;
+            }
+			if(GUI.Button(new Rect(2f, 20f, 138f, 15f), selectTitle))
+            {
+				WorldBoxMod.isChoosingCulture = !WorldBoxMod.isChoosingCulture;
+				if(WorldBoxMod.isChoosingCulture) { WorldTip.showNow("Selecting Culture", true, "top", 3f); }
+				Config.lockGameControls = !Config.lockGameControls;
+            }
+			if(WorldBoxMod.selectedCulture != null)
+            {
+				if (GUI.Button(new Rect(2f, 40f, 138f, 18f), "Finish Current Tech"))
 				{
-					for (int j = 0; j < zoneTiles[i].units.Count; ++i)
-					{
-						SetActorCulture(null, zoneTiles[i].units[j]);
-					}
+					
+				}
+				if (GUI.Button(new Rect(2f, 60f, 138f, 18f), "Expand Influence"))
+				{
+
+				}
+				if (GUI.Button(new Rect(2f, 80f, 138f, 18f), "Reduce Influence"))
+				{
+
+				}
+				if (GUI.Button(new Rect(2f, 100f, 138f, 18f), "Unlock All Tech"))
+				{
+
+				}
+				if (GUI.Button(new Rect(2f, 120f, 138f, 18f), "Unlock All Tech"))
+				{
 
 				}
 			}
-        }
-
-		void SetActorCulture(Culture culture, Actor actor)
-        {
-			actor.CallMethod(
-				"setCulture", new object[] { culture }
-				);
-        }
+			GUI.DragWindow(new Rect(0, 0, 10000, 10000));
+		}
 
 	}
 

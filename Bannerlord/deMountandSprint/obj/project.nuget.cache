@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "DYlHO6fXyfI3viJyujCSq0LQ+jmAzkTA1YJN5PpTlX3laNgVAfRundkga9omNKNZf6Wzm1IS5B0xdZMZK/+gEw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Titus\\OneDriveAndy\\OneDrive\\Documents\\Repository\\Hopstep\\Hopstep\\deMountandSprint.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Titus\\.nuget\\packages\\bannerlord.mcm\\4.3.16\\bannerlord.mcm.4.3.16.nupkg.sha512",
+    "C:\\Users\\Titus\\.nuget\\packages\\lib.harmony\\2.1.1\\lib.harmony.2.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}

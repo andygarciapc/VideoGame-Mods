@@ -1,0 +1,11 @@
+C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules\Hopstep\bin\Win64_Shipping_Client\Hopstep.dll
+C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules\Hopstep\bin\Win64_Shipping_Client\Hopstep.pdb
+C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules\deMountandSprint\bin\Hopstep.dll
+C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules\deMountandSprint\bin\Hopstep.pdb
+C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules\deMountandSprint\bin\Win64_Shipping_Client\deMountandSprint.dll
+C:\Program Files (x86)\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules\deMountandSprint\bin\Win64_Shipping_Client\deMountandSprint.pdb
+C:\Users\Titus\OneDriveAndy\OneDrive\Documents\Repository\Hopstep\Hopstep\obj\Debug\deMountandSprint.csproj.CoreCompileInputs.cache
+C:\Users\Titus\OneDriveAndy\OneDrive\Documents\Repository\Hopstep\Hopstep\obj\Debug\deMountandSprint.csproj.CopyComplete
+C:\Users\Titus\OneDriveAndy\OneDrive\Documents\Repository\Hopstep\Hopstep\obj\Debug\deMountandSprint.dll
+C:\Users\Titus\OneDriveAndy\OneDrive\Documents\Repository\Hopstep\Hopstep\obj\Debug\deMountandSprint.pdb
+C:\Users\Titus\OneDriveAndy\OneDrive\Documents\Repository\Hopstep\Hopstep\obj\Debug\deMountandSprint.csproj.AssemblyReference.cache

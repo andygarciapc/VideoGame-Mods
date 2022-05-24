@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Titus\\OneDriveAndy\\OneDrive\\Documents\\Repository\\Hopstep\\Hopstep\\Hopstep.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Titus\\OneDriveAndy\\OneDrive\\Documents\\Repository\\Hopstep\\Hopstep\\Hopstep.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Titus\\OneDriveAndy\\OneDrive\\Documents\\Repository\\Hopstep\\Hopstep\\Hopstep.csproj",
+        "projectName": "Hopstep",
+        "projectPath": "C:\\Users\\Titus\\OneDriveAndy\\OneDrive\\Documents\\Repository\\Hopstep\\Hopstep\\Hopstep.csproj",
+        "packagesPath": "C:\\Users\\Titus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Titus\\OneDriveAndy\\OneDrive\\Documents\\Repository\\Hopstep\\Hopstep\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Titus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Bannerlord.MCM": {
+              "include": "Compile",
+              "target": "Package",
+              "version": "[4.3.16, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

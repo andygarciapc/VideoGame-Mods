@@ -1,10 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\WorldBox",
-    "\\WorldBox\\Incarnate",
-    "\\WorldBox\\MortalBox"
+    "\\Bannerlord",
+    "\\WorldBox"
   ],
-  "SelectedNode": "\\WorldBox\\MortalBox\\MortalBox.cs",
+  "SelectedNode": "\\WorldBox\\Incarnate",
   "PreviewInSolutionExplorer": false
 }
